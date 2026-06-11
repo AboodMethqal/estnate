@@ -141,7 +141,7 @@ function formatPrice(price) {
 
 function createPropertyCard(property) {
     const images = Array.isArray(property.images) ? property.images : [property.images].filter(Boolean);
-    const imageUrl = images[0] || `https://picsum.photos/seed/property${property.id}/600/400`;
+    const imageUrl = images[0] || `/placeholder/600/400/0F5132/${encodeURIComponent(property.title.substring(0, 30))}`;
 
     return `
         <a href="property-details.html?id=${property.id}" class="property-card">
@@ -196,9 +196,9 @@ function showFallbackProperties(grid) {
     if (!target) return;
 
     const fallbacks = [
-        { id: 1, title: 'فيلا مودرن فاخرة - حي المطار', price: 80000000, status: 'sale', location: 'مأرب، حي المطار', area: 450, images: ['https://picsum.photos/seed/villa1/600/400'] },
-        { id: 2, title: 'شقة مميزة بإطلالة - وسط المدينة', price: 1200000, status: 'rent', location: 'مأرب، وسط المدينة', area: 180, images: ['https://picsum.photos/seed/apartment1/600/400'] },
-        { id: 3, title: 'أرض سكنية واسعة - حي السفير', price: 15000000, status: 'sale', location: 'مأرب، حي السفير', area: 800, images: ['https://picsum.photos/seed/land1/600/400'] }
+        { id: 1, title: 'فيلا مودرن فاخرة - حي المطار', price: 80000000, status: 'sale', location: 'مأرب، حي المطار', area: 450, images: ['/placeholder/600/400/0F5132/فيلا'] },
+        { id: 2, title: 'شقة مميزة بإطلالة - وسط المدينة', price: 1200000, status: 'rent', location: 'مأرب، وسط المدينة', area: 180, images: ['/placeholder/600/400/0F5132/شقة'] },
+        { id: 3, title: 'أرض سكنية واسعة - حي السفير', price: 15000000, status: 'sale', location: 'مأرب، حي السفير', area: 800, images: ['/placeholder/600/400/0F5132/أرض'] }
     ];
 
     target.innerHTML = fallbacks.map(createPropertyCard).join('');

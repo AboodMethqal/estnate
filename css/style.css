@@ -322,8 +322,7 @@ header.scrolled .navbar { height: 65px; }
     display: flex;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.85) 0%, rgba(var(--primary-rgb), 0.7) 100%),
-                url('https://picsum.photos/seed/realestatehero/1920/1080.jpg') center/cover no-repeat fixed;
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.85), rgba(var(--primary-rgb), 0.7));
     padding-top: var(--header-h);
 }
 

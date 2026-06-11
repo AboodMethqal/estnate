@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/fa/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -138,17 +138,18 @@
         }
 
         function getFallbackProperty(id) {
+            function fb(img, title) { return `/placeholder/1200/600/0F5132/${encodeURIComponent(title || 'عقار')}`; }
             const fallbacks = {
-                1: { id: 1, title: 'فيلا مودرن فاخرة - حي المطار', description: 'فيلا مودرن فاخرة تقع في حي المطار الراقي. تتميز بتصميم عصري ومساحات واسعة مع تشطيب فاخر. تضم villa 4 غرف نوم و3 حمامات وصالة كبيرة ومطبخ أمريكي وحديقة خاصة وموقف سيارات.', price: 80000000, status: 'sale', property_type: 'villa', location: 'مأرب، حي المطار', area: 450, images: ['https://picsum.photos/seed/villa1/1200/600', 'https://picsum.photos/seed/villa1b/1200/600', 'https://picsum.photos/seed/villa1c/1200/600'] },
-                2: { id: 2, title: 'شقة مميزة بإطلالة - وسط المدينة', description: 'شقة سكنية مميزة في وسط مدينة مأرب مع إطلالة رائعة. مناسبة للعائلات الصغيرة. تحتوي على 3 غرف نوم وصالة واسعة ومطبخ مجهز.', price: 1200000, status: 'rent', property_type: 'apartment', location: 'مأرب، وسط المدينة', area: 180, images: ['https://picsum.photos/seed/apartment1/1200/600', 'https://picsum.photos/seed/apartment1b/1200/600'] },
-                3: { id: 3, title: 'أرض سكنية واسعة - حي السفير', description: 'أرض سكنية واسعة بموقع ممتاز في حي السفير. مناسبة لبناء فيلا أو عمارة سكنية. الأرض مستوية وجاهزة للبناء.', price: 15000000, status: 'sale', property_type: 'land', location: 'مأرب، حي السفير', area: 800, images: ['https://picsum.photos/seed/land1/1200/600'] }
+                1: { id: 1, title: 'فيلا مودرن فاخرة - حي المطار', description: 'فيلا مودرن فاخرة تقع في حي المطار الراقي. تتميز بتصميم عصري ومساحات واسعة مع تشطيب فاخر. تضم villa 4 غرف نوم و3 حمامات وصالة كبيرة ومطبخ أمريكي وحديقة خاصة وموقف سيارات.', price: 80000000, status: 'sale', property_type: 'villa', location: 'مأرب، حي المطار', area: 450, images: [fb(1, 'فيلا'), fb(1, 'فيلا داخلي'), fb(1, 'فيلا خارجي')] },
+                2: { id: 2, title: 'شقة مميزة بإطلالة - وسط المدينة', description: 'شقة سكنية مميزة في وسط مدينة مأرب مع إطلالة رائعة. مناسبة للعائلات الصغيرة. تحتوي على 3 غرف نوم وصالة واسعة ومطبخ مجهز.', price: 1200000, status: 'rent', property_type: 'apartment', location: 'مأرب، وسط المدينة', area: 180, images: [fb(2, 'شقة'), fb(2, 'شقة داخلي')] },
+                3: { id: 3, title: 'أرض سكنية واسعة - حي السفير', description: 'أرض سكنية واسعة بموقع ممتاز في حي السفير. مناسبة لبناء فيلا أو عمارة سكنية. الأرض مستوية وجاهزة للبناء.', price: 15000000, status: 'sale', property_type: 'land', location: 'مأرب، حي السفير', area: 800, images: [fb(3, 'أرض')] }
             };
             return fallbacks[id];
         }
 
         function renderProperty(property) {
             const images = Array.isArray(property.images) ? property.images : [property.images].filter(Boolean);
-            const mainImage = images[0] || 'https://picsum.photos/seed/default/1200/600';
+            const mainImage = images[0] || '/placeholder/1200/600/0F5132/عقار';
             const galleryImages = images.slice(1);
 
             document.getElementById('breadcrumbTitle').textContent = property.title;

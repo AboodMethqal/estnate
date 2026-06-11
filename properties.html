@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/fa/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -174,12 +174,12 @@
 
             if (error || !data || data.length === 0) {
                 const fallbacks = [
-                    { id: 1, title: 'فيلا مودرن فاخرة - حي المطار', price: 80000000, status: 'sale', location: 'مأرب، حي المطار', area: 450, images: ['https://picsum.photos/seed/villa1/600/400'] },
-                    { id: 2, title: 'شقة مميزة بإطلالة - وسط المدينة', price: 1200000, status: 'rent', location: 'مأرب، وسط المدينة', area: 180, images: ['https://picsum.photos/seed/apartment1/600/400'] },
-                    { id: 3, title: 'أرض سكنية واسعة - حي السفير', price: 15000000, status: 'sale', location: 'مأرب، حي السفير', area: 800, images: ['https://picsum.photos/seed/land1/600/400'] },
-                    { id: 4, title: 'فيلا دوبلكس فاخرة - حي السفير', price: 120000000, status: 'sale', location: 'مأرب، حي السفير', area: 600, images: ['https://picsum.photos/seed/villa2/600/400'] },
-                    { id: 5, title: 'شقة مفروشة للإيجار', price: 3000000, status: 'rent', location: 'مأرب، وسط المدينة', area: 120, images: ['https://picsum.photos/seed/apartment2/600/400'] },
-                    { id: 6, title: 'أرض تجارية - شارع رئيسي', price: 25000000, status: 'sale', location: 'مأرب، حي المطار', area: 1200, images: ['https://picsum.photos/seed/land2/600/400'] }
+                    { id: 1, title: 'فيلا مودرن فاخرة - حي المطار', price: 80000000, status: 'sale', location: 'مأرب، حي المطار', area: 450, images: ['/placeholder/600/400/0F5132/فيلا'] },
+                    { id: 2, title: 'شقة مميزة بإطلالة - وسط المدينة', price: 1200000, status: 'rent', location: 'مأرب، وسط المدينة', area: 180, images: ['/placeholder/600/400/0F5132/شقة'] },
+                    { id: 3, title: 'أرض سكنية واسعة - حي السفير', price: 15000000, status: 'sale', location: 'مأرب، حي السفير', area: 800, images: ['/placeholder/600/400/0F5132/أرض'] },
+                    { id: 4, title: 'فيلا دوبلكس فاخرة - حي السفير', price: 120000000, status: 'sale', location: 'مأرب، حي السفير', area: 600, images: ['/placeholder/600/400/0F5132/فيلا'] },
+                    { id: 5, title: 'شقة مفروشة للإيجار', price: 3000000, status: 'rent', location: 'مأرب، وسط المدينة', area: 120, images: ['/placeholder/600/400/0F5132/شقة'] },
+                    { id: 6, title: 'أرض تجارية - شارع رئيسي', price: 25000000, status: 'sale', location: 'مأرب، حي المطار', area: 1200, images: ['/placeholder/600/400/0F5132/أرض'] }
                 ];
 
                 let filtered = fallbacks;
