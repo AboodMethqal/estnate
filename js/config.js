@@ -1,7 +1,7 @@
 const CONFIG = {
     supabase: {
-        url: 'https://your-project.supabase.co',
-        anonKey: 'your-anon-key'
+        url: 'https://edykjmavlyuebbdtcqlq.supabase.co',
+        anonKey: 'sb_publishable_NUJChA0seBP5uYeDX10H0Q_Nn34iWHe'
     },
     site: {
         name: 'عين سبأ للعقارات والمقاولات العامة',
