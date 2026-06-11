@@ -1,7 +1,7 @@
 const CONFIG = {
     supabase: {
         url: 'https://edykjmavlyuebbdtcqlq.supabase.co',
-        anonKey: 'sb_publishable_NUJChA0seBP5uYeDX10H0Q_Nn34iWHe'
+        anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkeWtqbWF2bHl1ZWJiZHRjcWxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyMDUxMDgsImV4cCI6MjA5Njc4MTEwOH0.4Zylmgg-l8_A2cn2SmYRRK0Y1fo7kAaK0P84WpsSn3U'
     },
     site: {
         name: 'عين سبأ للعقارات والمقاولات العامة',
