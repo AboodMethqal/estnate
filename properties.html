@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جميع العقارات | عين سبأ للعقارات والمقاولات العامة</title>
+    <meta name="description" content="تصفح جميع العقارات المتاحة لدى عين سبأ - فلل، شقق، أراضي وعقارات تجارية في مأرب.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="جميع العقارات | عين سبأ">
+    <meta property="og:description" content="تصفح جميع العقارات المتاحة في مأرب">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header id="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-building-columns"></i></span>
+                عين سبأ
+            </a>
+
+            <nav class="nav-links" id="navLinks" aria-label="القائمة الرئيسية">
+                <a href="index.html">الرئيسية</a>
+                <a href="index.html#about">من نحن</a>
+                <a href="index.html#services">خدماتنا</a>
+                <a href="index.html#properties" class="active">عقاراتنا</a>
+                <a href="properties.html">جميع العقارات</a>
+                <a href="index.html#contact">اتصل بنا</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="add-property.html" class="btn btn-sm btn-primary" aria-label="إضافة عقار">
+                    <i class="fa-solid fa-plus"></i> أضف عقارك
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section-padding" style="padding-top: calc(var(--header-h) + 40px);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>جميع العقارات</h2>
+                    <p>تصفح مجموعتنا المختارة من أفضل العقارات في مأرب</p>
+                    <div class="section-divider"></div>
+                </div>
+
+                <form class="search-bar" id="filterForm" style="margin-bottom: 40px;">
+                    <div class="form-group">
+                        <label for="filterType">نوع العقار</label>
+                        <select id="filterType" class="form-control" name="type">
+                            <option value="">كل الأنواع</option>
+                            <option value="apartment">شقة</option>
+                            <option value="villa">فيلا</option>
+                            <option value="land">أرض</option>
+                            <option value="commercial">تجاري</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterStatus">الحالة</label>
+                        <select id="filterStatus" class="form-control" name="status">
+                            <option value="">الكل</option>
+                            <option value="sale">للبيع</option>
+                            <option value="rent">للإيجار</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterSort">الترتيب</label>
+                        <select id="filterSort" class="form-control" name="sort">
+                            <option value="newest">الأحدث</option>
+                            <option value="price-asc">السعر: من الأقل</option>
+                            <option value="price-desc">السعر: من الأعلى</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-filter"></i> تصفية
+                    </button>
+                </form>
+
+                <div class="properties-grid" id="allPropertiesGrid">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3>عين سبأ</h3>
+                    <p>شركة عين سبأ للعقارات والمقاولات العامة، شريككم الموثوق في عالم العقارات والبناء في مأرب.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="تويتر"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="انستغرام"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/967779479094" aria-label="واتساب" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#about">من نحن</a></li>
+                        <li><a href="index.html#services">خدماتنا</a></li>
+                        <li><a href="properties.html">عقاراتنا</a></li>
+                        <li><a href="index.html#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-links">
+                    <h3>خدماتنا</h3>
+                    <ul>
+                        <li><a href="index.html#services">بيع وشراء العقارات</a></li>
+                        <li><a href="index.html#services">إدارة الأملاك</a></li>
+                        <li><a href="index.html#services">المقاولات العامة</a></li>
+                        <li><a href="index.html#services">الاستشارات الهندسية</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2025 عين سبأ للعقارات والمقاولات العامة</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/967779479094" class="whatsapp-float" target="_blank" title="تواصل عبر واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">تواصل عبر واتساب</span>
+    </a>
+
+    <button class="back-to-top" id="backToTop" aria-label="العودة إلى الأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.getElementById('allPropertiesGrid');
+        if (!grid) return;
+
+        const params = new URLSearchParams(window.location.search);
+
+        async function loadAllProperties() {
+            grid.innerHTML = createSkeletonGrid(6);
+
+            const filterType = params.get('type') || '';
+            const filterStatus = params.get('status') || '';
+
+            if (document.getElementById('filterType')) {
+                document.getElementById('filterType').value = filterType;
+            }
+            if (document.getElementById('filterStatus')) {
+                document.getElementById('filterStatus').value = filterStatus;
+            }
+
+            const { data, error } = await fetchProperties({
+                type: filterType,
+                status: filterStatus,
+                limit: 50
+            });
+
+            if (error || !data || data.length === 0) {
+                const fallbacks = [
+                    { id: 1, title: 'فيلا مودرن فاخرة - حي المطار', price: 80000000, status: 'sale', location: 'مأرب، حي المطار', area: 450, images: ['https://picsum.photos/seed/villa1/600/400'] },
+                    { id: 2, title: 'شقة مميزة بإطلالة - وسط المدينة', price: 1200000, status: 'rent', location: 'مأرب، وسط المدينة', area: 180, images: ['https://picsum.photos/seed/apartment1/600/400'] },
+                    { id: 3, title: 'أرض سكنية واسعة - حي السفير', price: 15000000, status: 'sale', location: 'مأرب، حي السفير', area: 800, images: ['https://picsum.photos/seed/land1/600/400'] },
+                    { id: 4, title: 'فيلا دوبلكس فاخرة - حي السفير', price: 120000000, status: 'sale', location: 'مأرب، حي السفير', area: 600, images: ['https://picsum.photos/seed/villa2/600/400'] },
+                    { id: 5, title: 'شقة مفروشة للإيجار', price: 3000000, status: 'rent', location: 'مأرب، وسط المدينة', area: 120, images: ['https://picsum.photos/seed/apartment2/600/400'] },
+                    { id: 6, title: 'أرض تجارية - شارع رئيسي', price: 25000000, status: 'sale', location: 'مأرب، حي المطار', area: 1200, images: ['https://picsum.photos/seed/land2/600/400'] }
+                ];
+
+                let filtered = fallbacks;
+                if (filterType) filtered = filtered.filter(p => p.title.includes(filterType === 'villa' ? 'فيلا' : filterType === 'apartment' ? 'شقة' : filterType === 'land' ? 'أرض' : 'تجاري'));
+                if (filterStatus) filtered = filtered.filter(p => p.status === filterStatus);
+                grid.innerHTML = filtered.length ? filtered.map(createPropertyCard).join('') : createEmptyState();
+                return;
+            }
+
+            grid.innerHTML = data.map(createPropertyCard).join('');
+        }
+
+        loadAllProperties();
+
+        const filterForm = document.getElementById('filterForm');
+        if (filterForm) {
+            filterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const type = document.getElementById('filterType').value;
+                const status = document.getElementById('filterStatus').value;
+                const params = new URLSearchParams();
+                if (type) params.set('type', type);
+                if (status) params.set('status', status);
+                window.location.search = params.toString();
+            });
+        }
+    });
+    </script>
+</body>
+</html>

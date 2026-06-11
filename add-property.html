@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة عقار | عين سبأ للعقارات والمقاولات العامة</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-building-columns"></i></span>
+                عين سبأ
+            </a>
+            <nav class="nav-links" id="navLinks" aria-label="القائمة الرئيسية">
+                <a href="index.html">الرئيسية</a>
+                <a href="properties.html">عقاراتنا</a>
+                <a href="index.html#contact">اتصل بنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section-padding" style="padding-top: calc(var(--header-h) + 40px);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>إضافة عقار جديد</h2>
+                    <p>أضف عقارك ليظهر في قائمة العقارات المتاحة</p>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div style="max-width: 700px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 50px;">
+                    <form id="addPropertyForm" novalidate>
+                        <div style="display: grid; gap: 20px;">
+                            <div class="form-group">
+                                <label for="propTitle">عنوان العقار</label>
+                                <input type="text" id="propTitle" name="title" class="form-control" placeholder="مثال: فيلا فاخرة للبيع في حي المطار" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="propDesc">الوصف</label>
+                                <textarea id="propDesc" name="description" class="form-control" rows="4" placeholder="وصف تفصيلي للعقار"></textarea>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                <div class="form-group">
+                                    <label for="propType">نوع العقار</label>
+                                    <select id="propType" name="property_type" class="form-control" required>
+                                        <option value="">اختر النوع</option>
+                                        <option value="apartment">شقة</option>
+                                        <option value="villa">فيلا</option>
+                                        <option value="land">أرض</option>
+                                        <option value="commercial">تجاري</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="propStatus">الحالة</label>
+                                    <select id="propStatus" name="status" class="form-control" required>
+                                        <option value="">اختر الحالة</option>
+                                        <option value="sale">للبيع</option>
+                                        <option value="rent">للإيجار</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                <div class="form-group">
+                                    <label for="propPrice">السعر (ريال)</label>
+                                    <input type="number" id="propPrice" name="price" class="form-control" placeholder="مثال: 80000000" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="propArea">المساحة (م²)</label>
+                                    <input type="number" id="propArea" name="area" class="form-control" placeholder="مثال: 450">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="propLocation">الموقع</label>
+                                <input type="text" id="propLocation" name="location" class="form-control" placeholder="مثال: مأرب، حي المطار">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="propImages">روابط الصور (رابط واحد لكل سطر)</label>
+                                <textarea id="propImages" name="images" class="form-control" rows="3" placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 28px;">
+                            <i class="fa-solid fa-plus"></i> إضافة العقار
+                        </button>
+                    </form>
+
+                    <div class="form-success" id="propertySuccess">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h3>تم إضافة العقار بنجاح!</h3>
+                        <p>سيظهر العقار في قائمة العقارات بعد المراجعة.</p>
+                        <a href="add-property.html" class="btn btn-outline-primary" style="margin-top: 16px;">إضافة عقار آخر</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3>عين سبأ</h3>
+                    <p>شركة عين سبأ للعقارات والمقاولات العامة، شريككم الموثوق في عالم العقارات والبناء في مأرب.</p>
+                </div>
+                <div class="footer-col footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="properties.html">عقاراتنا</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2025 عين سبأ للعقارات والمقاولات العامة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('addPropertyForm');
+        if (!form) return;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> جاري الإضافة...';
+
+            const imagesRaw = document.getElementById('propImages').value.trim();
+            const images = imagesRaw ? imagesRaw.split('\n').map(s => s.trim()).filter(Boolean) : [];
+
+            const propertyData = {
+                title: document.getElementById('propTitle').value.trim(),
+                description: document.getElementById('propDesc').value.trim(),
+                property_type: document.getElementById('propType').value,
+                status: document.getElementById('propStatus').value,
+                price: Number(document.getElementById('propPrice').value),
+                area: document.getElementById('propArea').value ? Number(document.getElementById('propArea').value) : null,
+                location: document.getElementById('propLocation').value.trim(),
+                images: images.length ? images : null,
+                featured: false
+            };
+
+            if (isSupabaseConfigured()) {
+                const { error } = await addProperty(propertyData);
+                if (error) {
+                    showToast('حدث خطأ أثناء إضافة العقار', 'error');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-plus"></i> إضافة العقار';
+                    return;
+                }
+            }
+
+            form.style.display = 'none';
+            document.getElementById('propertySuccess').classList.add('show');
+        });
+    });
+    </script>
+</body>
+</html>

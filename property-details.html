@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل العقار | عين سبأ للعقارات والمقاولات العامة</title>
+    <meta name="description" content="تفاصيل العقار من عين سبأ للعقارات والمقاولات العامة.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header id="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-building-columns"></i></span>
+                عين سبأ
+            </a>
+            <nav class="nav-links" id="navLinks" aria-label="القائمة الرئيسية">
+                <a href="index.html">الرئيسية</a>
+                <a href="index.html#about">من نحن</a>
+                <a href="index.html#services">خدماتنا</a>
+                <a href="properties.html" class="active">عقاراتنا</a>
+                <a href="index.html#contact">اتصل بنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section-padding" style="padding-top: calc(var(--header-h) + 40px);">
+            <div class="container">
+                <nav aria-label="مسار الصفحة" style="margin-bottom: 30px; font-size: 0.95rem; color: var(--text-secondary);">
+                    <a href="index.html" style="color: var(--primary);">الرئيسية</a>
+                    <i class="fa-solid fa-chevron-left" style="margin: 0 8px; font-size: 0.7rem;"></i>
+                    <a href="properties.html" style="color: var(--primary);">العقارات</a>
+                    <i class="fa-solid fa-chevron-left" style="margin: 0 8px; font-size: 0.7rem;"></i>
+                    <span id="breadcrumbTitle">تفاصيل العقار</span>
+                </nav>
+
+                <div id="propertyDetails">
+                    <div style="text-align: center; padding: 80px 20px; color: var(--text-muted);">
+                        <div class="spinner spinner-dark" style="width: 40px; height: 40px; margin: 0 auto 16px;"></div>
+                        <p>جاري تحميل تفاصيل العقار...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3>عين سبأ</h3>
+                    <p>شركة عين سبأ للعقارات والمقاولات العامة، شريككم الموثوق في عالم العقارات والبناء في مأرب.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="تويتر"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="انستغرام"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/967779479094" aria-label="واتساب" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="properties.html">عقاراتنا</a></li>
+                        <li><a href="index.html#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2025 عين سبأ للعقارات والمقاولات العامة</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/967779479094" class="whatsapp-float" target="_blank" title="تواصل عبر واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">تواصل عبر واتساب</span>
+    </a>
+
+    <button class="back-to-top" id="backToTop" aria-label="العودة إلى الأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const propertyId = params.get('id');
+        const container = document.getElementById('propertyDetails');
+
+        if (!propertyId) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <h3>لم يتم تحديد العقار</h3>
+                    <p><a href="properties.html" style="color: var(--primary); font-weight: 700;">تصفح جميع العقارات</a></p>
+                </div>
+            `;
+            return;
+        }
+
+        async function loadProperty() {
+            const { data, error } = await fetchPropertyById(propertyId);
+
+            if (error || !data) {
+                const fallback = getFallbackProperty(Number(propertyId));
+                if (fallback) {
+                    renderProperty(fallback);
+                } else {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fa-solid fa-building-circle-exclamation"></i>
+                            <h3>العقار غير موجود</h3>
+                            <p>العقار الذي تبحث عنه غير متاح حالياً. <a href="properties.html" style="color: var(--primary); font-weight: 700;">العودة إلى العقارات</a></p>
+                        </div>
+                    `;
+                }
+                return;
+            }
+
+            renderProperty(data);
+        }
+
+        function getFallbackProperty(id) {
+            const fallbacks = {
+                1: { id: 1, title: 'فيلا مودرن فاخرة - حي المطار', description: 'فيلا مودرن فاخرة تقع في حي المطار الراقي. تتميز بتصميم عصري ومساحات واسعة مع تشطيب فاخر. تضم villa 4 غرف نوم و3 حمامات وصالة كبيرة ومطبخ أمريكي وحديقة خاصة وموقف سيارات.', price: 80000000, status: 'sale', property_type: 'villa', location: 'مأرب، حي المطار', area: 450, images: ['https://picsum.photos/seed/villa1/1200/600', 'https://picsum.photos/seed/villa1b/1200/600', 'https://picsum.photos/seed/villa1c/1200/600'] },
+                2: { id: 2, title: 'شقة مميزة بإطلالة - وسط المدينة', description: 'شقة سكنية مميزة في وسط مدينة مأرب مع إطلالة رائعة. مناسبة للعائلات الصغيرة. تحتوي على 3 غرف نوم وصالة واسعة ومطبخ مجهز.', price: 1200000, status: 'rent', property_type: 'apartment', location: 'مأرب، وسط المدينة', area: 180, images: ['https://picsum.photos/seed/apartment1/1200/600', 'https://picsum.photos/seed/apartment1b/1200/600'] },
+                3: { id: 3, title: 'أرض سكنية واسعة - حي السفير', description: 'أرض سكنية واسعة بموقع ممتاز في حي السفير. مناسبة لبناء فيلا أو عمارة سكنية. الأرض مستوية وجاهزة للبناء.', price: 15000000, status: 'sale', property_type: 'land', location: 'مأرب، حي السفير', area: 800, images: ['https://picsum.photos/seed/land1/1200/600'] }
+            };
+            return fallbacks[id];
+        }
+
+        function renderProperty(property) {
+            const images = Array.isArray(property.images) ? property.images : [property.images].filter(Boolean);
+            const mainImage = images[0] || 'https://picsum.photos/seed/default/1200/600';
+            const galleryImages = images.slice(1);
+
+            document.getElementById('breadcrumbTitle').textContent = property.title;
+            document.title = `${property.title} | عين سبأ`;
+
+            container.innerHTML = `
+                <div class="property-detail" style="animation: fadeInUp 0.6s ease;">
+                    <div class="detail-gallery" style="margin-bottom: 40px;">
+                        <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden;">
+                            <span class="property-badge ${property.status === 'rent' ? 'rent' : 'sale'}" style="position: absolute; top: 20px; right: 20px; z-index: 2; font-size: 0.9rem; padding: 8px 20px;">
+                                ${property.status === 'rent' ? 'للإيجار' : 'للبيع'}
+                            </span>
+                            <img src="${mainImage}" alt="${property.title}" style="width: 100%; height: 500px; object-fit: cover; border-radius: var(--radius-lg);">
+                        </div>
+                        ${galleryImages.length ? `
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 12px;">
+                            ${galleryImages.map(img => `
+                                <img src="${img}" alt="${property.title}" style="width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius); cursor: pointer;">
+                            `).join('')}
+                        </div>` : ''}
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px;">
+                        <div>
+                            <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px;">
+                                ${property.title}
+                            </h1>
+                            <div class="property-location" style="font-size: 1rem; margin-bottom: 20px;">
+                                <i class="fa-solid fa-location-dot"></i> ${property.location || 'مأرب'}
+                            </div>
+                            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;">
+                                <div style="background: var(--bg); padding: 16px 24px; border-radius: var(--radius-sm); text-align: center;">
+                                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">${property.area || '-'}</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">المساحة (م²)</div>
+                                </div>
+                                <div style="background: var(--bg); padding: 16px 24px; border-radius: var(--radius-sm); text-align: center;">
+                                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">${property.property_type === 'villa' ? 'فيلا' : property.property_type === 'apartment' ? 'شقة' : property.property_type === 'land' ? 'أرض' : property.property_type || '-'}</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">نوع العقار</div>
+                                </div>
+                            </div>
+                            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--text-primary);">الوصف</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;">${property.description || 'عقار مميز في موقع رائع بمدينة مأرب.'}</p>
+                        </div>
+
+                        <div>
+                            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; position: sticky; top: calc(var(--header-h) + 20px);">
+                                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px;">السعر</div>
+                                <div style="font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 24px;">
+                                    ${formatPrice(property.price)}
+                                    ${property.status === 'rent' ? '<span style="font-size: 1rem; font-weight: 600; color: var(--text-muted);">/ سنوياً</span>' : ''}
+                                </div>
+
+                                <a href="https://wa.me/967779479094?text=${encodeURIComponent('أهلاً، أود الاستفسار عن عقار: ' + property.title)}" class="btn btn-secondary btn-block" target="_blank" style="margin-bottom: 12px;">
+                                    <i class="fa-brands fa-whatsapp"></i> استفسر عبر واتساب
+                                </a>
+                                <a href="index.html#contact" class="btn btn-outline-primary btn-block">
+                                    <i class="fa-solid fa-envelope"></i> أرسل استفساراً
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        loadProperty();
+    });
+    </script>
+</body>
+</html>
